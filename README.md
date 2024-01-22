@@ -30,7 +30,7 @@ Get your credentials (unique for every deploy):
 docker compose exec sshd cat credentials
 ```
 
-## Configure proxy
+## Configure client
 
 ### Linux
 
