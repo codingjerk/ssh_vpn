@@ -1,7 +1,7 @@
 AddressFamily inet
 
 HostKey /etc/ssh/ssh_host_ed25519_key
-Ciphers arcfour aes128-gcm@openssh.com aes128-cbc aes128-ctr
+Ciphers aes128-gcm@openssh.com,aes128-cbc,aes128-ctr
 
 # Auth options
 LoginGraceTime 10
