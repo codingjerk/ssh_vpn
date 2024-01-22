@@ -7,6 +7,6 @@ services:
     restart: unless-stopped
     mem_limit: 128M
     ports:
-      - "443:22"
+      - "0.0.0.0:443:22"
     volumes:
       - ./config/sshd_config:/etc/ssh/sshd_config:ro
