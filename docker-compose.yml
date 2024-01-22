@@ -1,5 +1,5 @@
 version: "3.9"
-name: ssh_tunnel
+name: ssh_vpn
 
 services:
   ssh_server:
