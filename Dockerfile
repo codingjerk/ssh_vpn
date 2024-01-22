@@ -1,11 +1,9 @@
-FROM archlinux:latest
+FROM alpine:latest
 
-SHELL ["/bin/bash", "-Eeuo", "pipefail", "-c"]
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
 # Install dependencies
-RUN pacman -Syu --noconfirm && \
-    pacman -S --noconfirm openssh && \
-    rm -rf /var/cache/pacman/pkg/*
+RUN apk add --no-cache openssh shadow
 
 # Generate host key
 RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
@@ -13,9 +11,8 @@ RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 # Add user
 RUN useradd -r -d / -s /usr/bin/nologin -c "VPN user" backup && \
     export PASSWORD=$(tr -dc A-Za-z0-9 </dev/random | head -c 16) && \
-    echo "backup:${PASSWORD}" | chpasswd && \
-    echo "Credentials are: backup:${PASSWORD}" && \
-    echo "Save it now"
+    echo "backup:${PASSWORD}" | tee "/credentials" | chpasswd && \
+    chmod 600 /credentials
 
 COPY ./config/sshd_config /etc/ssh/sshd_config
 
