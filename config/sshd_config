@@ -5,7 +5,7 @@ Ciphers aes128-gcm@openssh.com,aes128-cbc,aes128-ctr
 
 # Auth options
 LoginGraceTime 10
-PermitRootLogin yes
+PermitRootLogin no
 MaxAuthTries 3
 
 # Disable all shell and subsystem logins, allowing only forwarding
@@ -19,7 +19,7 @@ AuthenticationMethods password
 PubkeyAuthentication no
 PasswordAuthentication yes
 KbdInteractiveAuthentication yes
-PermitEmptyPasswords yes
+PermitEmptyPasswords no
 
 # Securing
 StrictModes yes
