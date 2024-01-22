@@ -1,0 +1,33 @@
+AddressFamily inet
+
+HostKey /etc/ssh/ssh_host_ed25519_key
+Ciphers aes128-gcm@openssh.com
+
+# Auth options
+LoginGraceTime 10
+PermitRootLogin yes
+MaxAuthTries 3
+UsePAM no
+
+# Disable all shell and subsystem logins, allowing only forwarding
+MaxSessions 0
+
+# Disable compression
+Compression no
+
+# Password auth
+AuthenticationMethods password
+PubkeyAuthentication no
+PasswordAuthentication yes
+KbdInteractiveAuthentication yes
+PermitEmptyPasswords yes
+
+# Securing
+StrictModes yes
+AllowAgentForwarding no
+AllowUsers backup
+
+# Send client alive messages every 5 seconds
+# and disconnect after 60 seconds without answer
+ClientAliveInterval 5
+ClientAliveCountMax 12

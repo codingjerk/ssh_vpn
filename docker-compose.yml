@@ -1,0 +1,10 @@
+version: "3.9"
+name: ssh_tunnel
+
+services:
+  ssh_server:
+    build: .
+    restart: unless-stopped
+    mem_limit: 256M
+    ports:
+      - "443:22"
