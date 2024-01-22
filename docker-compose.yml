@@ -2,9 +2,11 @@ version: "3.9"
 name: ssh_vpn
 
 services:
-  ssh_server:
+  sshd:
     build: .
     restart: unless-stopped
-    mem_limit: 256M
+    mem_limit: 128M
     ports:
       - "443:22"
+    volumes:
+      - ./config/sshd_config:/etc/ssh/sshd_config:ro

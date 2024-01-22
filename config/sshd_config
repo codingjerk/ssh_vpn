@@ -7,7 +7,6 @@ Ciphers aes128-gcm@openssh.com
 LoginGraceTime 10
 PermitRootLogin yes
 MaxAuthTries 3
-UsePAM no
 
 # Disable all shell and subsystem logins, allowing only forwarding
 MaxSessions 0
