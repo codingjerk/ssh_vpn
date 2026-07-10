@@ -3,6 +3,10 @@ AddressFamily inet
 HostKey /etc/ssh/ssh_host_ed25519_key
 Ciphers aes128-gcm@openssh.com,aes128-cbc,aes128-ctr
 
+# Extra algorithms for some clients
+KexAlgorithms +diffie-hellman-group-exchange-sha256  # For SSH Custom (Android)
+KexAlgorithms +curve25519-sha256  # General good for modern clients
+
 # Auth options
 LoginGraceTime 10
 PermitRootLogin no
