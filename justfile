@@ -14,5 +14,8 @@ status:
     docker compose ps
     docker compose logs --tail 20
 
+logs:
+    docker compose logs --tail 100 -f
+
 add-user name:
     ./scripts/add-user.sh {{name}}
