@@ -24,7 +24,7 @@ PermitEmptyPasswords no
 # Securing
 StrictModes yes
 AllowAgentForwarding no
-AllowUsers backup
+AllowGroups tunnel
 
 # Send client alive messages every 5 seconds
 # and disconnect after 60 seconds without answer

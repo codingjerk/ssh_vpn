@@ -11,6 +11,13 @@ cd ssh_vpn
 
 ## Deploy server
 
+Create users (one `username:password` per line in `credentials`):
+
+```sh
+cp credentials.example credentials
+./add-user.sh alice  # Generates a password and appends "alice:<password>"
+```
+
 Build and start server:
 
 ```sh
@@ -24,10 +31,19 @@ docker compose ps  # Should be "healthy"
 docker compose logs  # Should not have errors
 ```
 
-Get your credentials (unique for every deploy):
+## Manage users
+
+Add a user and apply changes:
 
 ```sh
-docker compose exec sshd cat credentials
+./add-user.sh bob
+docker compose restart
+```
+
+To remove a user, delete their line from `credentials` and recreate the container:
+
+```sh
+docker compose up -d --force-recreate
 ```
 
 ## Configure client
@@ -37,7 +53,7 @@ docker compose exec sshd cat credentials
 Setup SOCKS5 proxy manually:
 
 ```sh
-ssh -D 127.0.0.1:5050 -N backup@backup.cj.dog -p 443
+ssh -D 127.0.0.1:5050 -N alice@backup.cj.dog -p 443
 ```
 
 Now you can change proxy in your browser to:
