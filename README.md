@@ -24,6 +24,9 @@ Build and start server:
 docker compose up -d
 ```
 
+Common tasks are also available via [just](https://github.com/casey/just):
+`just start`, `just stop`, `just restart`, `just status` and `just add-user alice`.
+
 Check status:
 
 ```sh
@@ -33,11 +36,18 @@ docker compose logs  # Should not have errors
 
 ## Manage users
 
-Add a user and apply changes:
+Add a user (applied to the running server immediately, no restart needed):
 
 ```sh
 ./scripts/add-user.sh bob
-docker compose restart
+```
+
+The script also prints ready-to-use client profiles (ssh command, Android/iOS
+app settings and an import URI). Set `SSH_VPN_SERVER` if the public address
+differs from the machine's hostname:
+
+```sh
+SSH_VPN_SERVER=backup.cj.dog ./scripts/add-user.sh bob
 ```
 
 To remove a user, delete their line from `credentials` and recreate the container:

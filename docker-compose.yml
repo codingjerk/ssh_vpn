@@ -9,4 +9,9 @@ services:
       - "0.0.0.0:2202:22"
     volumes:
       - ./config/sshd_config:/etc/ssh/sshd_config:ro
-      - ./credentials:/run/secrets/credentials:ro
+      - type: bind
+        source: ./credentials
+        target: /run/secrets/credentials
+        read_only: true
+        bind:
+          create_host_path: false
