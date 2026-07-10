@@ -2,7 +2,7 @@ name: ssh_vpn
 
 services:
   sshd:
-    build: .
+    build: ./docker
     restart: unless-stopped
     mem_limit: 128M
     ports:

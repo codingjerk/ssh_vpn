@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-user=${1:?usage: ./add-user.sh <username>}
-credentials=$(dirname "$0")/credentials
+user=${1:?usage: ./scripts/add-user.sh <username>}
+credentials=$(dirname "$0")/../credentials
 
 if grep -q "^${user}:" "${credentials}" 2>/dev/null; then
     echo "error: user '${user}' already exists in ${credentials}" >&2

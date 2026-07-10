@@ -15,7 +15,7 @@ Create users (one `username:password` per line in `credentials`):
 
 ```sh
 cp credentials.example credentials
-./add-user.sh alice  # Generates a password and appends "alice:<password>"
+./scripts/add-user.sh alice  # Generates a password and appends "alice:<password>"
 ```
 
 Build and start server:
@@ -36,7 +36,7 @@ docker compose logs  # Should not have errors
 Add a user and apply changes:
 
 ```sh
-./add-user.sh bob
+./scripts/add-user.sh bob
 docker compose restart
 ```
 
