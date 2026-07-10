@@ -7,6 +7,7 @@ services:
     mem_limit: 128M
     ports:
       - "0.0.0.0:2202:22"
+      - "[::]:2202:22"
     volumes:
       - ./config/sshd_config:/etc/ssh/sshd_config:ro
       - type: bind
